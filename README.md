@@ -2,8 +2,7 @@
 Data structures and algorithms implementations I coded during RSP
 
 ## Implementations 
-- [x] Linked List
-- [ ] incomplete task
+- [x] Linked List.
 - [ ] A Binary Tree.
 - [ ] A Graph using an Adjacency List.
 - [ ] Depth First Search.
