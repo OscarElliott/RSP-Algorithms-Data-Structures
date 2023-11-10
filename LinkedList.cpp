@@ -1,13 +1,14 @@
 #include "LinkedList.h"
 #include <iostream>
 
+/* Implementation for Singly Linked List */
 
 using namespace std;
 
 template <typename T>
 LinkedList<T>::LinkedList()
 {
-    this->data = nullptr;
+    this->data = T();
     this->next = nullptr;
 }
 
@@ -33,7 +34,7 @@ template <typename T>
 void LinkedList<T>::Insert(LinkedList<T> **l, T x)
 {
     LinkedList<T>* current = new LinkedList(x);
-    current->next = *l
+    current->next = *l;
     *l = current;
 }
 
@@ -42,11 +43,10 @@ LinkedList<T>* LinkedList<T>::PredecessorList(LinkedList<T> *l, T x)
 {
     if (l == nullptr || l->next == nullptr)
     {
-        cout << "Error: predecessor sough on a null list.\n";
         return nullptr;
     }
 
-    if (l->next->item == x)
+    if (l->next->data == x)
         return l;
     else
         return(PredecessorList(l->next, x));
@@ -70,7 +70,7 @@ void LinkedList<T>::Delete_List(LinkedList<T> **l, T x)
 template <typename T>
 void LinkedList<T>::PrintList(LinkedList<T> *l)
 {
-    if (l = nullptr)
+    if (l == nullptr)
     {
         cout << endl;
         return;
@@ -78,3 +78,5 @@ void LinkedList<T>::PrintList(LinkedList<T> *l)
     cout << l->data << " -> ";
     PrintList(l->next);
 }
+
+template class LinkedList<int>;

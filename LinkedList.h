@@ -4,11 +4,9 @@
 template <typename T>
 class LinkedList 
 {
-    private:
+    public:
         T data;
         LinkedList* next;
-
-    public:
         LinkedList();
         LinkedList(T x);
         LinkedList* Search(LinkedList *l, T x);
