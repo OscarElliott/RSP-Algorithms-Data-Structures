@@ -5,8 +5,10 @@ template <typename T>
 class LinkedList 
 {
     public:
+        // variables
         T data;
         LinkedList* next;
+        // operations
         LinkedList();
         LinkedList(T x);
         LinkedList* Search(LinkedList *l, T x);
