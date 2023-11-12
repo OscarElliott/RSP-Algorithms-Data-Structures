@@ -118,7 +118,7 @@ BST<T>* BST<T>::deleteNode(T x, BST<T> *tree)
         {
             BST<T>* temp = Find_min(tree->right); // minNode in right Subtree
             tree->data = temp->data;
-            tree->left = deleteNode(temp->data, tree->left);
+            tree->right = deleteNode(temp->data, tree->right);
         }
     }
     return tree;

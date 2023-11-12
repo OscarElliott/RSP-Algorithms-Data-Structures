@@ -35,6 +35,26 @@ void run_BST()
     bst->inOrder(bst);
     cout << endl;
 
+    cout << "Adding 15" << endl;
+    bst->insert(15, bst);
+    bst->inOrder(bst);
+    cout << endl;
+
+    cout << "Adding 25" << endl;
+    bst->insert(25, bst);
+    bst->inOrder(bst);
+    cout << endl;
+
+    cout << "Adding 14" << endl;
+    bst->insert(14, bst);
+    bst->inOrder(bst);
+    cout << endl;
+
+    cout << "Deleting 15" << endl;
+    bst->deleteNode(15, bst);
+    bst->inOrder(bst);
+    cout << endl;
+
     return;
 }
 
