@@ -1,10 +1,26 @@
 #include "LinkedList.h"
 #include "BST.h"
+#include "Graph.h"
 #include <iostream>
 #include <string>
 
 
 using namespace std;
+
+void run_Graph()
+{
+    Graph* g = new Graph();
+    g->init_Graph(g, 10, true);
+    g->insert_edge(g, 1, 2, true);
+    g->insert_edge(g, 1, 3, true);
+    g->insert_edge(g, 2, 4, false);
+    g->insert_edge(g, 3, 4, true);
+    g->insert_edge(g, 10, 4, true);
+    g->insert_edge(g, 7, 3, false);
+    g->insert_edge(g, 6, 10, true);
+    g->print_Graph(g);
+    cout << endl;
+}
 
 void run_BST()
 {
@@ -105,27 +121,41 @@ void run_LinkedList()
 
 int main()
 {
-    string options[] = {"LinkedList", "Binry Search Tree"};
-    int k = sizeof(options) / sizeof(options[0]);    
-    cout<< "What would you like to run?" << endl;
-    for (int i = 0; i<k; i++)
+    string options[] = {"LinkedList", "Binry Search Tree", "Graph", "Exit"};
+    int k = sizeof(options) / sizeof(options[0]);
+    bool running = true;
+    while(running)
     {
-        cout << i+1 << ". " << options[i] << endl;
-    }
-    int choice;
-    cout << "Select your choice (1-k): ";
-    cin >> choice;
+        cout<< "What would you like to run?" << endl;
+        for (int i = 0; i<k; i++)
+        {
+            cout << i+1 << ". " << options[i] << endl;
+        }
+        int choice;
+        cout << "Select your choice (1-k): ";
+        cin >> choice;
 
-    switch (choice) 
-    {
-        case 1:
-            run_LinkedList();
-            break;
-        case 2:
-            run_BST();
-            break;
-        default:
-            cout << "Invalid choice" << endl;
+        switch (choice) 
+        {
+            case 1:
+                run_LinkedList();
+                cout<< "\n\n Test Finished\n\n" << endl;
+                break;
+            case 2:
+                run_BST();
+                cout<< "\n\n Test Finished\n\n" << endl;
+                break;
+            case 3:
+                run_Graph();
+                cout<< "\n\n Test Finished\n\n" << endl;
+                break;
+            case 4:
+                running = false;;
+                break;
+            default:
+                cout << "Invalid choice" << endl;
+                break;
+        }
     }
 
     return 0;
