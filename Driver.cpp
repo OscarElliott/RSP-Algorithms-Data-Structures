@@ -1,11 +1,57 @@
 #include "LinkedList.h"
 #include "BST.h"
 #include "Graph.h"
+#include "DFS.h"
 #include <iostream>
 #include <string>
 
 
 using namespace std;
+
+void run_DFS()
+{
+    cout << "TEST 1: Simple Acyclic Directed Graph:" << endl;
+    Graph* g = new Graph();
+    g->init_Graph(g, 10, true);
+    g->insert_edge(g, 1, 2, true);
+    g->insert_edge(g, 1, 3, true);
+    g->insert_edge(g, 2, 4, true);
+    g->insert_edge(g, 3, 5, true);
+    g->insert_edge(g, 3, 6, true);
+    g->print_Graph(g);
+    cout << endl;
+    DFS* s = new DFS(g);
+    s->dfs(g,1); // 6 5 4 3 2 1
+    cout << "\n\n";
+
+    cout << "TEST 2: Simple Directed Graph:" << endl;
+    g->init_Graph(g, 10, true);
+    g->insert_edge(g, 1, 2, true);
+    g->insert_edge(g, 1, 3, true);
+    g->insert_edge(g, 2, 4, true);
+    g->insert_edge(g, 3, 5, true);
+    g->insert_edge(g, 3, 6, true);
+    g->insert_edge(g, 5, 2, true);
+    g->print_Graph(g);
+    cout << endl;
+    DFS* s2 = new DFS(g);
+    s2->dfs(g,1); // 6 4 2 5 3 1
+    cout << "\n\n";
+
+    cout << "TEST 3: Simple Undirected Graph:" << endl;
+    g->init_Graph(g, 10, false);
+    g->insert_edge(g, 1, 2, false);
+    g->insert_edge(g, 1, 3, false);
+    g->insert_edge(g, 2, 4, false);
+    g->insert_edge(g, 3, 5, false);
+    g->insert_edge(g, 3, 6, false);
+    g->insert_edge(g, 5, 2, false);
+    g->print_Graph(g);
+    cout << endl;
+    DFS* s3 = new DFS(g);
+    s3->dfs(g,1); // 6 4 2 5 3 1
+    cout << "\n\n"; 
+}
 
 void run_Graph()
 {
@@ -121,7 +167,7 @@ void run_LinkedList()
 
 int main()
 {
-    string options[] = {"LinkedList", "Binry Search Tree", "Graph", "Exit"};
+    string options[] = {"LinkedList", "Binry Search Tree", "Graph", "DFS", "Exit"};
     int k = sizeof(options) / sizeof(options[0]);
     bool running = true;
     while(running)
@@ -150,7 +196,11 @@ int main()
                 cout<< "\n\n Test Finished\n\n" << endl;
                 break;
             case 4:
-                running = false;;
+                run_DFS();
+                cout<< "\n\n Test Finished\n\n" << endl;
+                break;
+            case 5:
+                running = false;
                 break;
             default:
                 cout << "Invalid choice" << endl;
