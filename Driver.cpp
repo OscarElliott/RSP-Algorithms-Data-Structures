@@ -2,11 +2,57 @@
 #include "BST.h"
 #include "Graph.h"
 #include "DFS.h"
+#include "BFS.h"
 #include <iostream>
 #include <string>
 
 
 using namespace std;
+
+void run_BFS()
+{
+    cout << "TEST 1: Simple Acyclic Directed Graph:" << endl;
+    Graph* g = new Graph();
+    g->init_Graph(g, 10, true);
+    g->insert_edge(g, 1, 2, true);
+    g->insert_edge(g, 1, 3, true);
+    g->insert_edge(g, 2, 4, true);
+    g->insert_edge(g, 3, 5, true);
+    g->insert_edge(g, 3, 6, true);
+    g->print_Graph(g);
+    cout << endl;
+    BFS* s = new BFS(g);
+    s->bfs(g,1); // 6 5 4 3 2 1
+    cout << "\n\n";
+
+    cout << "TEST 2: Simple Directed Graph:" << endl;
+    g->init_Graph(g, 10, true);
+    g->insert_edge(g, 1, 2, true);
+    g->insert_edge(g, 1, 3, true);
+    g->insert_edge(g, 2, 4, true);
+    g->insert_edge(g, 3, 5, true);
+    g->insert_edge(g, 3, 6, true);
+    g->insert_edge(g, 5, 2, true);
+    g->print_Graph(g);
+    cout << endl;
+    BFS* s2 = new BFS(g);
+    s2->bfs(g,1); // 6 4 2 5 3 1
+    cout << "\n\n";
+
+    cout << "TEST 3: Simple Undirected Graph:" << endl;
+    g->init_Graph(g, 10, false);
+    g->insert_edge(g, 1, 2, false);
+    g->insert_edge(g, 1, 3, false);
+    g->insert_edge(g, 2, 4, false);
+    g->insert_edge(g, 3, 5, false);
+    g->insert_edge(g, 3, 6, false);
+    g->insert_edge(g, 5, 2, false);
+    g->print_Graph(g);
+    cout << endl;
+    BFS* s3 = new BFS(g);
+    s3->bfs(g,1); // 6 4 2 5 3 1
+    cout << "\n\n"; 
+}
 
 void run_DFS()
 {
@@ -167,7 +213,7 @@ void run_LinkedList()
 
 int main()
 {
-    string options[] = {"LinkedList", "Binry Search Tree", "Graph", "DFS", "Exit"};
+    string options[] = {"LinkedList", "Binry Search Tree", "Graph", "DFS", "BFS", "Exit"};
     int k = sizeof(options) / sizeof(options[0]);
     bool running = true;
     while(running)
@@ -178,7 +224,7 @@ int main()
             cout << i+1 << ". " << options[i] << endl;
         }
         int choice;
-        cout << "Select your choice (1-k): ";
+        cout << "Select your choice (1-6): ";
         cin >> choice;
 
         switch (choice) 
@@ -200,6 +246,9 @@ int main()
                 cout<< "\n\n Test Finished\n\n" << endl;
                 break;
             case 5:
+                run_BFS();
+                break;
+            case 6:
                 running = false;
                 break;
             default:
